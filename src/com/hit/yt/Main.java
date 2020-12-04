@@ -113,11 +113,66 @@ public class Main {
         return true;
 
     }
+//1.1.2
+    public static boolean generateMagicSquare(int n) {
+        if (n % 2 == 0) {
+            System.out.println("Input an even number!");
+            return false;
+        }
+        if (n <= 0) {
+            System.out.println("Input a negative number!");
+            return false;
+        }
+        BufferedWriter out=null;
+        try{
+            out=new BufferedWriter(new FileWriter("src/txt/7.txt"));
+
+            int magic[][] = new int[n][n];
+            int row = 0, col = n / 2, i, j, square = n * n;
+            for (i = 1; i <= square; i++) {
+                magic[row][col] = i;
+                if (i % n == 0)
+                    row++;
+                else {
+                    if (row == 0)
+                        row = n - 1;
+                    else
+                        row--;
+                    if (col == (n - 1))
+                        col = 0;
+                    else
+                        col++;
+                }
+            }
+            for (i = 0; i < n; i++) {
+                for (j = 0; j < n; j++)
+                    out.write(magic[i][j] + "\t");
+                out.write("\n");
+            }
+            out.flush();
+        }catch (FileNotFoundException e){
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }finally {
+            if(out!=null){
+                try {
+                    out.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        return true;
+    }
+
 
     public static void main(String[] args) {
         boolean ans;
         String s;
-        for(int i=1;i<7;i++){
+        System.out.println(generateMagicSquare(9));
+        for(int i=1;i<8;i++){
 //            s="E:\\JavaFile\\Project\\src\\txt\\"+i+".txt";
             s="src/txt/"+i+".txt";
             boolean ret= isLegalMagicSquare(s);
@@ -126,5 +181,6 @@ public class Main {
 //            System.out.println(file.getAbsolutePath());
             System.out.println("第"+i+"个文本结果为："+ret);
         }
+
     }
 }
