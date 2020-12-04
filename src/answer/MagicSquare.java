@@ -181,22 +181,23 @@ public class MagicSquare {
 		PrintStream out = System.out;
 		in = new Scanner(System.in);
 		int n = 0;
-		for (int i = 1; i <= 5; i++) {
-			s = "src/main/java/P1/txt/" + String.valueOf(i) + ".txt";
+		for (int i = 1; i <= 6; i++) {
+			s = "src/txt/" + String.valueOf(i) + ".txt";
 			ans = isLegalMagicSquare(s);
 			System.out.println(String.valueOf(i) + ".txt" + " " + ans);
 		}
-		try {
-			n = in.nextInt();
-		} catch (InputMismatchException e) {
-			System.out.println("Something input is not an integer!");
-			return;
-		}
-		ans = generateMagicSquare(n) & isLegalMagicSquare("src/main/java/P1/txt/6.txt");
-		System.setOut(out);
-		if (!ans) {
-			System.out.println(ans);
-		} else
-			System.out.println("6.txt " + ans);
+//
+//		try {
+//			n = in.nextInt();
+//		} catch (InputMismatchException e) {
+//			System.out.println("Something input is not an integer!");
+//			return;
+//		}
+//		ans = generateMagicSquare(n) & isLegalMagicSquare("src/txt/6.txt");
+//		System.setOut(out);
+//		if (!ans) {
+//			System.out.println(ans);
+//		} else
+//			System.out.println("6.txt " + ans);
 	}
 }
